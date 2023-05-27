@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Fluent GPT</string>
+    <string name="input_subject_placeholder">Digite um assunto para falar em inglês</string>
+    <string name="button_subject">INICIAR CONVERSA</string>
+    <string name="list_conversation_title">Conversas</string>
 </resources>
