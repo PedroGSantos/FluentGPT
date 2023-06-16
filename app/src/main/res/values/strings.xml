@@ -3,4 +3,6 @@
     <string name="input_subject_placeholder">Digite um assunto para falar em inglês</string>
     <string name="button_subject">INICIAR CONVERSA</string>
     <string name="list_conversation_title">Conversas</string>
+    <string name="title_conversation">Lorem</string>
+    <string name="last_message">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
 </resources>
