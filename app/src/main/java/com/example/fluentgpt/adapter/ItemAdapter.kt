@@ -1,12 +1,14 @@
 package com.example.fluentgpt.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fluentgpt.OpenConversation
 import com.example.fluentgpt.R
 import com.example.fluentgpt.model.Conversations
 
@@ -29,5 +31,11 @@ class ItemAdapter(private val context: Context, private val dataset: List<Conver
         val item = dataset[position]
         holder.cardMessage.findViewById<TextView>(R.id.title_conversation).text =  context.resources.getString(item.titleConversationId)
         holder.cardMessage.findViewById<TextView>(R.id.last_message).text =  context.resources.getString(item.lastMessageConversationId)
+        holder.cardMessage.setOnClickListener{
+            val context = holder.cardMessage.context;
+            val intent = Intent(context,OpenConversation::class.java)
+            context.startActivity(intent)
+        }
+
     }
 }
