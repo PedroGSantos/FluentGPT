@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Conversations">
+    <View
+        android:id="@+id/containerSubject"
+        android:layout_width="0dp"
+        android:layout_height="188dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/container_secondary"
+        >
+    </View>
+
+    <EditText
+        android:id="@+id/inputSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:padding="8dp"
+        android:layout_marginTop="50dp"
+        android:elevation="8dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="@string/input_subject_placeholder"
+
+        app:layout_constraintEnd_toEndOf="@id/containerSubject"
+        app:layout_constraintStart_toStartOf="@id/containerSubject"
+        app:layout_constraintTop_toTopOf="@id/containerSubject"
+        android:textSize="12sp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="@string/button_subject"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:background="@drawable/button_background"
+        app:layout_constraintBottom_toBottomOf="@id/containerSubject"
+        app:layout_constraintEnd_toEndOf="@id/containerSubject"
+        app:layout_constraintStart_toStartOf="@id/containerSubject"
+        app:layout_constraintTop_toBottomOf="@id/inputSubject" />
+    <TextView
+        android:id="@+id/conversationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/list_conversation_title"
+        app:layout_constraintTop_toBottomOf="@+id/containerSubject"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:id="@+id/list_conversations"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="245dp"
+        app:layout_constraintTop_toBottomOf="@+id/conversationLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:scrollbars="vertical"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
