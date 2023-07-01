@@ -2,6 +2,7 @@ package com.example.fluentgpt.data
 
 import com.example.fluentgpt.R
 import com.example.fluentgpt.model.Conversations
+import com.example.fluentgpt.model.Message
 
 class Datasource {
 
@@ -19,5 +20,21 @@ class Datasource {
 
         )
     }
+
+    fun loadMessages(): List<Message> {
+        return listOf<Message>(
+            Message(1, R.string.last_message ),
+            Message(0, R.string.last_message),
+            Message(0, R.string.last_message),
+            Message(1, R.string.last_message),
+            Message(1, R.string.last_message),
+            Message(1, R.string.last_message),
+            Message(0, R.string.last_message),
+            Message(1, R.string.last_message),
+            Message(1, R.string.last_message)
+
+        )
+    }
+
 
 }
