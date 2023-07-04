@@ -6,9 +6,283 @@
     tools:context=".Routine">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="teste" />
+        tools:context=".MainActivity">
+
+        <!-- Título "Rotina de Estudos" -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rotina de Estudos"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:padding="16dp"
+            android:layout_marginStart="24dp"
+            />
+
+        <!-- Caixa de fundo cinza com os checkboxs -->
+
+        <!-- Título "Progresso" -->
+
+        <LinearLayout
+            android:id="@+id/checkboxContainer"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleTextView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/rounded_corner"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:id="@+id/titleTextViewSegunda"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Segunda"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/subtitleTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Leia um texto em inglês"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_marginStart="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:id="@+id/titleTextViewTerca"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Terça"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/subtitleTextViewTerca"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Converse com nosso chat sobre o texto de segunda"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/checkBoxTerca"
+                    android:layout_marginStart="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:id="@+id/titleTextViewQuarta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Quarta"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/subtitleTextViewQuarta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ouça um áudio"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/checkBoxQuarta"
+                    android:layout_marginStart="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:id="@+id/titleTextViewQuinta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Quinta"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/subtitleTextViewQuinta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fale sobre o áudio de quarta"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/checkBoxQuinta"
+                    android:layout_marginStart="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:id="@+id/titleTextViewSexta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sexta"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/subtitleTextViewSexta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Estude uma regra gramátical"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/checkBoxSexta"
+                    android:layout_marginStart="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/progressTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Progresso"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_below="@id/checkboxContainer" />
+
+        <!-- Caixa de fundo cinza com o texto -->
+        <LinearLayout
+            android:id="@+id/textContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressTitleTextView"
+            android:background="@drawable/rounded_corner"
+            android:padding="16dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp">
+
+            <TextView
+                android:id="@+id/textViewProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8 semanas cumpridas!"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="12dp"/>/>
+
+
+            <ImageView
+                android:id="@+id/iconImageView"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="60dp"
+                android:src="@drawable/monitoring" />
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
