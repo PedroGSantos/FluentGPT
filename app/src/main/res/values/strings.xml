@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Fluent GPT</string>
-    <string name="input_subject_placeholder">Digite um assunto para falar em inglês</string>
-    <string name="button_subject">INICIAR CONVERSA</string>
-    <string name="list_conversation_title">Conversas</string>
+    <string name="input_subject_placeholder">Enter a subject to speak in English</string>
+    <string name="button_subject">START CONVERSATION</string>
+    <string name="list_conversation_title">CONVERSATIONS</string>
     <string name="title_conversation">Lorem</string>
     <string name="last_message">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
-    <string name="placeholder_text_conversation">Escreva uma mensagem</string>
+    <string name="placeholder_text_conversation">Write a message</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
