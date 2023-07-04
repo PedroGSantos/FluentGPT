@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/conversations"
-        android:title="Conversas"
+        android:title="@string/menu_conversation"
         android:icon="@drawable/ic_forum"
         />
     <item
         android:id="@+id/timeline"
-        android:title="Rotina"
+        android:title="@string/menu_routine"
         android:icon="@drawable/ic_timeline"
         />
     <item
         android:id="@+id/settings"
-        android:title="Configurações"
+        android:title="@string/menu_settings"
         android:icon="@drawable/ic_settings"
         />
 </menu>

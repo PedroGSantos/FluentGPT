@@ -1,13 +1,14 @@
-
-
 <resources>
-<string name="app_name">Fluent GPT</string>
-<string name="input_subject_placeholder">Digite um assunto para falar em inglês</string>
-<string name="button_subject">INICIAR CONVERSA</string>
-<string name="list_conversation_title">Conversas</string>
-<string name="title_conversation">Lorem</string>
-<string name="last_message">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
-<string name="placeholder_text_conversation">Escreva uma mensagem</string>
-<!-- TODO: Remove or change this placeholder text -->
-<string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Fluent GPT</string>
+    <string name="input_subject_placeholder">Digite um assunto para falar em inglês</string>
+    <string name="button_subject">INICIAR CONVERSA</string>
+    <string name="list_conversation_title">Conversas</string>
+    <string name="title_conversation">Lorem</string>
+    <string name="last_message">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="placeholder_text_conversation">Escreva uma mensagem</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_conversation">Conversas</string>]
+    <string name="menu_routine">Rotina</string>
+    <string name="menu_settings">Configurações</string>
 </resources>
