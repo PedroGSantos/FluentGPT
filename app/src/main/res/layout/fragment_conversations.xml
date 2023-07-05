@@ -34,6 +34,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="35dp"
+        android:id="@+id/create_conversation_button"
         android:text="@string/button_subject"
         android:focusableInTouchMode="true"
         android:textSize="12sp"
