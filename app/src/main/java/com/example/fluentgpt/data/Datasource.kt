@@ -22,25 +22,13 @@ class Datasource {
         )
     }
 
-    fun loadMessages(): List<Message> {
-        return listOf<Message>(
-            Message(1, R.string.last_message ),
-            Message(0, R.string.last_message),
-            Message(0, R.string.last_message),
-            Message(1, R.string.last_message),
-            Message(1, R.string.last_message),
-            Message(1, R.string.last_message),
-            Message(0, R.string.last_message),
-            Message(1, R.string.last_message),
-            Message(1, R.string.last_message)
-
-        )
+    //TODO: Change this function to load historic messages from database when user open a conversation
+    fun loadMessages(): MutableList<Message> {
+        return mutableListOf<Message>()
     }
-
-
 }
 
-data class MessagesTest(val messages: Array<MessageUser>, val model: String)
+data class HistoricMessages(val messages: MutableList<MessageUser>, val model: String)
 
 data class MessageUser(
     @SerializedName("role")
@@ -49,52 +37,24 @@ data class MessageUser(
     val content: String
     )
 
-data class Model(
-    val id: String,
-    @SerializedName("object")
-    val objectType: String,
-    val owned_by: String,
-)
-
-data class Response(
-    val data: List<Model>,
-    val `object`: String
-)
 
 data class ChatCompletionResponse(
-    @SerializedName("id")
-    val id: String,
-    @SerializedName("object")
-    val objectType: String,
-    @SerializedName("created")
-    val created: Long,
     @SerializedName("choices")
-    val choices: List<Choice>,
-    @SerializedName("usage")
-    val usage: Usage
+    val choices: List<Choice>
 )
 
 data class Choice(
     @SerializedName("index")
     val index: Int,
     @SerializedName("message")
-    val message: Messagee,
+    val message: MessageResponse,
     @SerializedName("finish_reason")
     val finishReason: String
 )
 
-data class Messagee(
+data class MessageResponse(
     @SerializedName("role")
     val role: String,
     @SerializedName("content")
     val content: String
-)
-
-data class Usage(
-    @SerializedName("prompt_tokens")
-    val promptTokens: Int,
-    @SerializedName("completion_tokens")
-    val completionTokens: Int,
-    @SerializedName("total_tokens")
-    val totalTokens: Int
 )

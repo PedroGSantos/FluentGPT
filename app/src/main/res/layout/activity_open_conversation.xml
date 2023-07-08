@@ -32,7 +32,7 @@
             android:background="@android:color/transparent"
             />
         <TextView
-            android:id="@+id/title_conversatione"
+            android:id="@+id/title_conversation"
             android:layout_width="wrap_content"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@id/container_title_message"

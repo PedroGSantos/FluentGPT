@@ -16,7 +16,7 @@ import com.example.fluentgpt.R
 import com.example.fluentgpt.model.Message
 import org.w3c.dom.Text
 
-class ItemAdapterMessage(private val context: Context, private val dataset: List<Message>): RecyclerView.Adapter<ItemAdapterMessage.ItemViewHolder>() {
+class ItemAdapterMessage(private val context: Context, private val dataset: MutableList<Message>): RecyclerView.Adapter<ItemAdapterMessage.ItemViewHolder>() {
     class ItemViewHolder(private val view: View): RecyclerView.ViewHolder(view){
         val cardMessage: ConstraintLayout = view.findViewById(R.id.message_container)
     }
@@ -31,17 +31,21 @@ class ItemAdapterMessage(private val context: Context, private val dataset: List
         return dataset.size
     }
 
+    fun addItem(message: Message) {
+        dataset.add(message);
+    }
+
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         if (item.ownerMessage == 0){
             Log.d("PEDRO", "Passou aq")
             holder.cardMessage.findViewById<ConstraintLayout>(R.id.message_gpt).visibility = View.GONE
             holder.cardMessage.findViewById<ConstraintLayout>(R.id.message_user).visibility = View.VISIBLE
-            holder.cardMessage.findViewById<ConstraintLayout>(R.id.message_user).findViewById<TextView>(R.id.message_user_content).text = context.resources.getString(item.messageId)
+            holder.cardMessage.findViewById<ConstraintLayout>(R.id.message_user).findViewById<TextView>(R.id.message_user_content).text = item.messageContent
         } else {
             holder.cardMessage.findViewById<ConstraintLayout>(R.id.message_gpt).visibility = View.VISIBLE
             holder.cardMessage.findViewById<ConstraintLayout>(R.id.message_user).visibility = View.GONE
-            holder.cardMessage.findViewById<ConstraintLayout>(R.id.message_gpt).findViewById<TextView>(R.id.message_gpt_content).text = context.resources.getString(item.messageId)
+            holder.cardMessage.findViewById<ConstraintLayout>(R.id.message_gpt).findViewById<TextView>(R.id.message_gpt_content).text = item.messageContent
         }
     }
 }
