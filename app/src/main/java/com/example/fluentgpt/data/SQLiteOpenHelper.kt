@@ -10,12 +10,16 @@ import android.database.sqlite.SQLiteOpenHelper
 class SQLiteOpenHelper(context: Context?) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
-        val createUserTableQuery = "CREATE TABLE user_data (id INTEGER PRIMARY KEY, weeksStudyRoutine INTEGER)"
+        val createUserTableQuery = "CREATE TABLE user_data (id INTEGER PRIMARY KEY , weeksStudyRoutine INTEGER)"
         db.execSQL(createUserTableQuery)
 
         val createConversasTableQuery =
-            "CREATE TABLE conversas (id INTEGER PRIMARY KEY, usuario_id INTEGER, mensagem TEXT, FOREIGN KEY(usuario_id) REFERENCES usuario(id))"
+            "CREATE TABLE conversas (id INTEGER PRIMARY KEY AUTOINCREMENT, topic TEXT)"
         db.execSQL(createConversasTableQuery)
+
+        val createMensagemTableQuery =
+            "CREATE TABLE mensagem (id INTEGER PRIMARY KEY AUTOINCREMENT, ownerMessage INTEGER, mensagem TEXT, id_conversation INTEGER, FOREIGN KEY(id_conversation) REFERENCES conversas(id))"
+        db.execSQL(createMensagemTableQuery)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -34,6 +38,14 @@ class SQLiteOpenHelper(context: Context?) :
             put("weeksStudyRoutine", weeksStudyRoutine)
         }
         db.insert("user_data", null, values)
+    }
+
+    fun createConversation(topic: String){
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("topic", topic)
+        }
+        db.insert("conversas", null, values)
     }
 
     fun atualizarDadosWeek(id: Int, weeksStudyRoutine: Int) {
