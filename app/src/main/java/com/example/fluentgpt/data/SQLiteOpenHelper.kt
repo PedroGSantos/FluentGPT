@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper
 class SQLiteOpenHelper(context: Context?) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
-        val createUserTableQuery = "CREATE TABLE user_data (id INTEGER PRIMARY KEY, weeksStudyRoutine INTEGER, )"
+        val createUserTableQuery = "CREATE TABLE user_data (id INTEGER PRIMARY KEY, weeksStudyRoutine INTEGER)"
         db.execSQL(createUserTableQuery)
 
         val createConversasTableQuery =
@@ -27,24 +27,36 @@ class SQLiteOpenHelper(context: Context?) :
         }
     }
 
-    fun inserirDados(nome: String?) {
+    fun inserirDadosWeek(weeksStudyRoutine: Int) {
         val db = writableDatabase
-        val values = ContentValues()
-        values.put("nome", nome)
-        db.insert("minha_tabela", null, values)
+        val values = ContentValues().apply {
+            put("id", 1)
+            put("weeksStudyRoutine", weeksStudyRoutine)
+        }
+        db.insert("user_data", null, values)
+    }
+
+    fun atualizarDadosWeek(id: Int, weeksStudyRoutine: Int) {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("weeksStudyRoutine", weeksStudyRoutine)
+        }
+        val whereClause = "id = ?"
+        val whereArgs = arrayOf(id.toString())
+        db.update("user_data", values, whereClause, whereArgs)
     }
 
     @SuppressLint("Range")
-    fun lerDados(): List<String> {
+    fun lerDadosWeekRoutine(): Int {
         val db = readableDatabase
-        val nomes: MutableList<String> = ArrayList()
-        val cursor = db.rawQuery("SELECT nome FROM minha_tabela", null)
-        while (cursor.moveToNext()) {
-            val nome = cursor.getString(cursor.getColumnIndex("nome"))
-            nomes.add(nome)
+        val cursor = db.rawQuery("SELECT weeksStudyRoutine FROM user_data WHERE id = ?", arrayOf("1"))
+        if (cursor.moveToNext()) {
+            val weeksStudyRoutine = cursor.getInt(cursor.getColumnIndex("weeksStudyRoutine"))
+            cursor.close()
+            return weeksStudyRoutine
         }
         cursor.close()
-        return nomes
+        return -1 // ou outro valor padrão caso o valor não seja encontrado
     }
 
     companion object {
