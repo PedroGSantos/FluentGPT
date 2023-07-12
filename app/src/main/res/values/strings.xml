@@ -11,4 +11,9 @@
     <string name="menu_conversation">Conversation</string>
     <string name="menu_routine">Routine</string>
     <string name="menu_settings">Settings</string>
+    <string name="title_settings_page">General</string>
+    <string name="language_text">App Language</string>
+    <string name="english">English</string>
+    <string name="portuguese">Portuguese</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>
