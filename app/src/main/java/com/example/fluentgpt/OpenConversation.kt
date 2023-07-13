@@ -54,9 +54,9 @@ class OpenConversation : AppCompatActivity() {
                 "Hello, lets talk about $topic"
             ));
 
-        if (intent.getStringExtra("firstMessage") !== null){
+        /*if (intent.getStringExtra("firstMessage") !== null){
             itemAdapter.addItem(Message(1, intent.getStringExtra("firstMessage")))
-        }
+        }*/
 
         for (i in myDataset){
             mensagensFromHistoric.add(MessageUser(if (i.ownerMessage == 1) "assistant" else "user", i.messageContent.toString()))

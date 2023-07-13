@@ -56,20 +56,15 @@ class SQLiteOpenHelper(context: Context?) :
         val db = readableDatabase
         val conversationList = mutableListOf<Conversations>()
 
-        val query = "SELECT conversas.id, topic, mensagem.mensagem " +
-                "FROM conversas " +
-                "LEFT JOIN (SELECT mensagem.id_conversation, mensagem.mensagem " +
-                "           FROM mensagem " +
-                "           WHERE mensagem.id IN (SELECT MAX(id) FROM mensagem GROUP BY id_conversation)) AS mensagem " +
-                "ON conversas.id = mensagem.id_conversation"
+        val query = "SELECT conversas.id, topic FROM conversas"
 
         val cursor = db.rawQuery(query, null)
 
         while (cursor.moveToNext()) {
             val id = cursor.getInt(cursor.getColumnIndex("id"))
             val topic = cursor.getString(cursor.getColumnIndex("topic"))
-            val lastMessage = cursor.getString(cursor.getColumnIndex("mensagem"))
-            val conversation = Conversations(topic, if (lastMessage == null) "Sem última mensagem" else lastMessage , id)
+
+            val conversation = Conversations(topic, "Sem última mensagem", id)
             conversationList.add(conversation)
         }
 

@@ -59,11 +59,11 @@ class Conversations : Fragment() {
         binding.createConversationButton.setOnClickListener {
             val intent = Intent(binding.createConversationButton.context,OpenConversation::class.java)
             intent.putExtra("topic", binding.inputSubject.text.toString());
-            val topic = intent.getStringExtra("topic")
+            val topic = binding.inputSubject.text.toString()
             if (topic != null && topic != "") {
                 val service = GptApi.retrofitService
                 val conversationCreate = dbHelper.createConversation(topic)
-
+                intent.putExtra("idConversation", conversationCreate.toInt())
                 var messagesConversation = HistoricMessages(
                     mutableListOf(
                         MessageUser(
@@ -88,9 +88,8 @@ class Conversations : Fragment() {
                 lifecycleScope.launch {
                     val response = service.createChat(messagesConversation);
                     dbHelper.addMessageToConversation(conversationCreate.toInt(), 1, response.body()?.choices?.get(0)?.message?.content.toString())
-
-                    intent.putExtra("firstMessage", response.body()?.choices?.get(0)?.message?.content.toString())
-                    intent.putExtra("idConversation", conversationCreate)
+                    Log.d("conversation",conversationCreate.toString())
+                    //intent.putExtra("firstMessage", response.body()?.choices?.get(0)?.message?.content.toString())
                     startActivity(intent)
                 }
             }else{
