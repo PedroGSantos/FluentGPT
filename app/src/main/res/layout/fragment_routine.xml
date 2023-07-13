@@ -241,6 +241,7 @@
 
         </LinearLayout>
 
+        <!--
         <TextView
             android:id="@+id/progressTitleTextView"
             android:layout_width="match_parent"
@@ -253,7 +254,6 @@
             android:layout_marginStart="24dp"
             android:layout_below="@id/checkboxContainer" />
 
-        <!-- Caixa de fundo cinza com o texto -->
         <LinearLayout
             android:id="@+id/textContainer"
             android:layout_width="match_parent"
@@ -282,8 +282,9 @@
                 android:layout_height="32dp"
                 android:layout_marginStart="30dp"
                 android:src="@drawable/monitoring" />
-        </LinearLayout>
 
+        </LinearLayout>
+        -->
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

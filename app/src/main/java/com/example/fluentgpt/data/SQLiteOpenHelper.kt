@@ -77,14 +77,16 @@ class SQLiteOpenHelper(context: Context?) :
         return conversationList
     }
 
-    fun addMessageToConversation(conversationId: Int, ownerMessage: Int, message: String) {
+    fun addMessageToConversation(conversationId: Int, ownerMessage: Int, message: String): Long {
         val db = writableDatabase
         val values = ContentValues().apply {
             put("id_conversation", conversationId)
             put("ownerMessage", ownerMessage)
             put("mensagem", message)
         }
-        db.insert("mensagem", null, values)
+        return db.insert("mensagem", null, values)
+
+
     }
 
     @SuppressLint("Range")

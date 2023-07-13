@@ -73,10 +73,10 @@ class Routine : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_routine, container, false)
-        val textViewProgress = view.findViewById<TextView>(R.id.textViewProgress)
+        //val textViewProgress = view.findViewById<TextView>(R.id.textViewProgress)
 
         // Modificar o texto do TextView
-        textViewProgress.text = "${verifyNumberWeek ?: 0} semanas cumpridas!"
+        //textViewProgress.text = "${verifyNumberWeek ?: 0} semanas cumpridas!"
 
         return view
     }

@@ -26,6 +26,7 @@ class OpenConversation : AppCompatActivity() {
         setContentView(binding.root)
         val topic = intent.getStringExtra("topic")
         val idConversation = intent.getIntExtra("idConversation", -1)
+
         val myDataset = Datasource(dbHelper).loadMessages(idConversation)
         itemAdapter = ItemAdapterMessage(this, myDataset)
         binding.listMessages.adapter = itemAdapter
@@ -33,46 +34,42 @@ class OpenConversation : AppCompatActivity() {
 
         val service = GptApi.retrofitService
 
-
-
         binding.titleConversation.text = topic?.capitalize();
 
-        var messagesConversation = HistoricMessages(
-            mutableListOf(
-                MessageUser(
-                    "system",
-                    "You are an English teacher, talk to the user and correct their answers, if necessary, teaching the correct part of the grammar. Talk only in English"
-                ),
-                MessageUser(
+        var mensagensFromHistoric: MutableList<MessageUser> = mutableListOf(
+            MessageUser(
+            "system",
+            "You are an English teacher, talk to the user and correct their answers, if necessary, teaching the correct part of the grammar. Talk only in English"
+            ),
+            MessageUser(
                 "system",
-                    "In this conversation, bring up a topic about $topic.When the user doesn't talk much, bring up another topic about $topic"
-                ),
-                MessageUser(
-                    "system",
-                    "In this conversation, don't give long answers, let the user speak"
-                ),
-                MessageUser(
-                    "user",
+                "In this conversation, bring up a topic about $topic.When the user doesn't talk much, bring up another topic about $topic"
+            ),
+            MessageUser(
+                "system",
+                "In this conversation, don't give long answers, let the user speak"
+            ),
+            MessageUser(
+                "user",
                 "Hello, lets talk about $topic"
-                )
-            ), "gpt-3.5-turbo"
-        );
+            ));
 
-        lifecycleScope.launch {
-            val response = service.createChat(messagesConversation);
-            messagesConversation.messages.add(MessageUser("assistant", response.body()?.choices?.firstOrNull()?.message?.content.toString()))
-            itemAdapter.addItem(
-                Message(
-                    1,
-                    response.body()?.choices?.firstOrNull()?.message?.content
-                )
-            )
-
-            itemAdapter.notifyDataSetChanged();
+        if (intent.getStringExtra("firstMessage") !== null){
+            itemAdapter.addItem(Message(1, intent.getStringExtra("firstMessage")))
         }
 
+        for (i in myDataset){
+            mensagensFromHistoric.add(MessageUser(if (i.ownerMessage == 1) "assistant" else "user", i.messageContent.toString()))
+        }
+
+        var messagesConversation = HistoricMessages(
+            mensagensFromHistoric, "gpt-3.5-turbo"
+        );
+
         binding.sendMessageButton.setOnClickListener{
+
             messagesConversation.messages.add(MessageUser("user", binding.inputSubject.text.toString()))
+            val me = dbHelper.addMessageToConversation(idConversation,0, binding.inputSubject.text.toString())
             itemAdapter.addItem(
                 Message(0,
                     binding.inputSubject.text.toString())
@@ -80,12 +77,9 @@ class OpenConversation : AppCompatActivity() {
             binding.inputSubject.text.clear()
             itemAdapter.notifyDataSetChanged()
 
-            dbHelper.addMessageToConversation(idConversation,0, binding.inputSubject.text.toString())
-
             lifecycleScope.launch {
                 val response = service.createChat(messagesConversation);
                 dbHelper.addMessageToConversation(idConversation,1, response.body()?.choices?.get(0)?.message?.content.toString())
-                Log.d("Pedro", messagesConversation.toString())
                 messagesConversation.messages.add(MessageUser("user", response.body()?.choices?.firstOrNull()?.message?.content.toString()))
                 itemAdapter.addItem(
                     Message(

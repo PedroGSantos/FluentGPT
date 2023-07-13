@@ -8,10 +8,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.example.fluentgpt.adapter.ItemAdapter
 import com.example.fluentgpt.data.Datasource
+import com.example.fluentgpt.data.HistoricMessages
+import com.example.fluentgpt.data.MessageUser
 import com.example.fluentgpt.data.SQLiteOpenHelper
 import com.example.fluentgpt.databinding.FragmentConversationsBinding
+import com.example.fluentgpt.network.GptApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,9 +61,38 @@ class Conversations : Fragment() {
             intent.putExtra("topic", binding.inputSubject.text.toString());
             val topic = intent.getStringExtra("topic")
             if (topic != null && topic != "") {
+                val service = GptApi.retrofitService
                 val conversationCreate = dbHelper.createConversation(topic)
-                intent.putExtra("idConversation", conversationCreate)
-                startActivity(intent)
+
+                var messagesConversation = HistoricMessages(
+                    mutableListOf(
+                        MessageUser(
+                            "system",
+                            "You are an English teacher, talk to the user and correct their answers, if necessary, teaching the correct part of the grammar. Talk only in English"
+                        ),
+                        MessageUser(
+                            "system",
+                            "In this conversation, bring up a topic about $topic.When the user doesn't talk much, bring up another topic about $topic"
+                        ),
+                        MessageUser(
+                            "system",
+                            "In this conversation, don't give long answers, let the user speak"
+                        ),
+                        MessageUser(
+                            "user",
+                            "Hello, lets talk about $topic"
+                        )
+                    ), "gpt-3.5-turbo"
+                );
+
+                lifecycleScope.launch {
+                    val response = service.createChat(messagesConversation);
+                    dbHelper.addMessageToConversation(conversationCreate.toInt(), 1, response.body()?.choices?.get(0)?.message?.content.toString())
+
+                    intent.putExtra("firstMessage", response.body()?.choices?.get(0)?.message?.content.toString())
+                    intent.putExtra("idConversation", conversationCreate)
+                    startActivity(intent)
+                }
             }else{
                 // Modal aqui
                 showEmptyTopicDialog()
