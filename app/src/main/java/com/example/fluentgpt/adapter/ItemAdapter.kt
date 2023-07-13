@@ -29,8 +29,8 @@ class ItemAdapter(private val context: Context, private val dataset: List<Conver
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.cardMessage.findViewById<TextView>(R.id.title_conversation).text =  context.resources.getString(item.titleConversationId)
-        holder.cardMessage.findViewById<TextView>(R.id.last_message).text =  context.resources.getString(item.lastMessageConversationId)
+        holder.cardMessage.findViewById<TextView>(R.id.title_conversation).text =  item.titleConversation
+        holder.cardMessage.findViewById<TextView>(R.id.last_message).text =  item.lastMessageConversation
         holder.cardMessage.setOnClickListener{
             val context = holder.cardMessage.context;
             val intent = Intent(context,OpenConversation::class.java)

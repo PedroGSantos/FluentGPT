@@ -1,30 +1,24 @@
 package com.example.fluentgpt.data
 
+import android.util.Log
 import com.example.fluentgpt.R
 import com.example.fluentgpt.model.Conversations
 import com.example.fluentgpt.model.Message
 import com.google.gson.annotations.SerializedName
 
-class Datasource {
+
+class Datasource(private val dbHelper: SQLiteOpenHelper) {
 
     fun loadConversations(): List<Conversations>{
-        return listOf<Conversations>(
-            Conversations(R.string.title_conversation, R.string.last_message),
-            Conversations(R.string.title_conversation, R.string.last_message),
-            Conversations(R.string.title_conversation, R.string.last_message),
-            Conversations(R.string.title_conversation, R.string.last_message),
-            Conversations(R.string.title_conversation, R.string.last_message),
-            Conversations(R.string.title_conversation, R.string.last_message),
-            Conversations(R.string.title_conversation, R.string.last_message),
-            Conversations(R.string.title_conversation, R.string.last_message),
-            Conversations(R.string.title_conversation, R.string.last_message),
-
-        )
+        val conversations = dbHelper.getConversations()
+        Log.d("TESTE", conversations.toString())
+        return conversations
     }
 
     //TODO: Change this function to load historic messages from database when user open a conversation
-    fun loadMessages(): MutableList<Message> {
-        return mutableListOf<Message>()
+    fun loadMessages(idConversation: Int): MutableList<Message> {
+        val messages = dbHelper.getMessagesFromConversation(idConversation);
+        return messages
     }
 }
 

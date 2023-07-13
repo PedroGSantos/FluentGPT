@@ -1,4 +1,4 @@
 package com.example.fluentgpt.model
 
-data class Conversations(val titleConversationId: Int, val lastMessageConversationId: Int) {
+data class Conversations(val titleConversation: String, val lastMessageConversation: String, val id: Int) {
 }

@@ -9,6 +9,7 @@ import com.example.fluentgpt.adapter.ItemAdapterMessage
 import com.example.fluentgpt.data.Datasource
 import com.example.fluentgpt.data.HistoricMessages
 import com.example.fluentgpt.data.MessageUser
+import com.example.fluentgpt.data.SQLiteOpenHelper
 import com.example.fluentgpt.databinding.ActivityOpenConversationBinding
 import com.example.fluentgpt.model.Message
 import com.example.fluentgpt.network.GptApi
@@ -17,19 +18,22 @@ import kotlinx.coroutines.launch
 class OpenConversation : AppCompatActivity() {
     private lateinit var binding: ActivityOpenConversationBinding
     private lateinit var itemAdapter: ItemAdapterMessage;
+    private val dbHelper by lazy { SQLiteOpenHelper(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_open_conversation)
         binding = ActivityOpenConversationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val myDataset = Datasource().loadMessages()
+        val topic = intent.getStringExtra("topic")
+        val idConversation = intent.getIntExtra("idConversation", -1)
+        val myDataset = Datasource(dbHelper).loadMessages(idConversation)
         itemAdapter = ItemAdapterMessage(this, myDataset)
         binding.listMessages.adapter = itemAdapter
         binding.listMessages.setHasFixedSize(true)
 
         val service = GptApi.retrofitService
 
-        val topic = intent.getStringExtra("topic")
+
 
         binding.titleConversation.text = topic?.capitalize();
 
@@ -76,8 +80,11 @@ class OpenConversation : AppCompatActivity() {
             binding.inputSubject.text.clear()
             itemAdapter.notifyDataSetChanged()
 
+            dbHelper.addMessageToConversation(idConversation,0, binding.inputSubject.text.toString())
+
             lifecycleScope.launch {
                 val response = service.createChat(messagesConversation);
+                dbHelper.addMessageToConversation(idConversation,1, response.body()?.choices?.get(0)?.message?.content.toString())
                 Log.d("Pedro", messagesConversation.toString())
                 messagesConversation.messages.add(MessageUser("user", response.body()?.choices?.firstOrNull()?.message?.content.toString()))
                 itemAdapter.addItem(

@@ -16,7 +16,7 @@ val okHttpClient = OkHttpClient.Builder()
     .addInterceptor { chain ->
         val originalRequest = chain.request()
         val authenticatedRequest = originalRequest.newBuilder()
-            .header("Authorization", " Bearer <CHAVE>")
+            .header("Authorization", " Bearer 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")
             .build()
         chain.proceed(authenticatedRequest)
     }
