@@ -16,4 +16,17 @@
     <string name="english">English</string>
     <string name="portuguese">Portuguese</string>
     <string name="dark_mode">Dark Mode</string>
+    <string name="study_routine">Study Routine</string>
+    <string name="monday">Monday</string>
+    <string name="read_text_english">Read a text in English</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="chat_with_chat">Chat with our chat about Monday\'s text</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="listen_audio">Listen to an audio</string>
+    <string name="thursday">Thursday</string>
+    <string name="talk_wed_audio">Talk about Wednesday audio</string>
+    <string name="friday">Friday</string>
+    <string name="study_grammer">Study a grammar rule</string>
+    <string name="progress">Progress</string>
+    <string name="weeks_done">8 weeks done!</string>
 </resources>

@@ -16,7 +16,7 @@
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rotina de Estudos"
+            android:text="@string/study_routine"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
@@ -59,7 +59,7 @@
                         android:id="@+id/titleTextViewSegunda"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Segunda"
+                        android:text="@string/monday"
                         android:textStyle="bold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textSize="18sp" />
@@ -68,7 +68,7 @@
                         android:id="@+id/subtitleTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Leia um texto em inglês"
+                        android:text="@string/read_text_english"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -98,7 +98,7 @@
                         android:id="@+id/titleTextViewTerca"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Terça"
+                        android:text="@string/tuesday"
                         android:textStyle="bold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textSize="18sp" />
@@ -107,7 +107,7 @@
                         android:id="@+id/subtitleTextViewTerca"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Converse com nosso chat sobre o texto de segunda"
+                        android:text="@string/chat_with_chat"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -137,7 +137,7 @@
                         android:id="@+id/titleTextViewQuarta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quarta"
+                        android:text="@string/wednesday"
                         android:textStyle="bold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textSize="18sp" />
@@ -146,7 +146,7 @@
                         android:id="@+id/subtitleTextViewQuarta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Ouça um áudio"
+                        android:text="@string/listen_audio"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -176,7 +176,7 @@
                         android:id="@+id/titleTextViewQuinta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quinta"
+                        android:text="@string/thursday"
                         android:textStyle="bold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textSize="18sp" />
@@ -185,7 +185,7 @@
                         android:id="@+id/subtitleTextViewQuinta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Fale sobre o áudio de quarta"
+                        android:text="@string/talk_wed_audio"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -215,7 +215,7 @@
                         android:id="@+id/titleTextViewSexta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Sexta"
+                        android:text="@string/friday"
                         android:textStyle="bold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textSize="18sp" />
@@ -224,7 +224,7 @@
                         android:id="@+id/subtitleTextViewSexta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Estude uma regra gramátical"
+                        android:text="@string/study_grammer"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -245,7 +245,7 @@
             android:id="@+id/progressTitleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Progresso"
+            android:text="@string/progress"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -268,12 +268,12 @@
                 android:id="@+id/textViewProgress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8 semanas cumpridas!"
+                android:text="@string/weeks_done"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="12dp"/>/>
+                android:layout_marginLeft="12dp"/>
 
 
             <ImageView
