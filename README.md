@@ -5,7 +5,9 @@ Uma aplicação desenvolvida para o curso de desenvolvimento mobile. App para pr
 
 Grupo:
 Áquila Oliveira
+
 Pedro Gonçalves dos Santos
+
 Ruan Crysthian Lima Ferraz
 
 Instruções para rodar a aplicação:
