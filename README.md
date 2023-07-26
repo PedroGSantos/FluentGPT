@@ -4,6 +4,7 @@ An application developed for a mobile development course. App to practice englis
 Uma aplicação desenvolvida para o curso de desenvolvimento mobile. App para praticar Inglês com o Chat GPT
 
 Grupo:
+
 Áquila Oliveira
 
 Pedro Gonçalves dos Santos
